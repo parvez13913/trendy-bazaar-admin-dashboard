@@ -31,7 +31,9 @@ const FormInput: React.FC<FormInputProps> = ({
   const errorMessage = GetErrorMessage(errors, name);
   return (
     <>
-      {required ? <span className="text-red-500">*</span> : null}
+      {required ? (
+        <span className="text-red-500 font-semibold text-2xl">*</span>
+      ) : null}
       {label ? label : null}
       <Controller
         control={control}

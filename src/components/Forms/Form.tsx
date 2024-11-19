@@ -11,7 +11,7 @@ type FormProps = {
   submitHandler: SubmitHandler<any>;
 } & FormConfig;
 
-const From: React.FC<FormProps> = ({
+const Form: React.FC<FormProps> = ({
   children,
   submitHandler,
   defaultValues,
@@ -38,4 +38,4 @@ const From: React.FC<FormProps> = ({
   );
 };
 
-export default From;
+export default Form;
