@@ -1,6 +1,6 @@
+import Button from "@/components/Forms/Button";
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
-import Button from "@/components/ui/button";
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -11,9 +11,9 @@ const LoginPage: React.FC = () => {
   return (
     <section>
       <div className="flex items-center justify-center mt-4 lg:mt-10">
-        <h2 className="rounded-full border p-6 h-32 w-32 text-center">
+        <h2 className="rounded-full border border-[#0D7C66] p-6 h-32 w-32 text-center">
           <FaShoppingCart className="w-10 h-10 mx-auto text-[#0D7C66]" />
-          <span className="font-semibold text-xs mt-4 line-clamp-none">
+          <span className="font-bold text-xs mt-4 line-clamp-none">
             Trendy Bazar
           </span>
         </h2>
@@ -48,8 +48,8 @@ const LoginPage: React.FC = () => {
                   <Link to="/forgot-password">Forgot password?</Link>
                 </div>
               </div>
-              <div className="space-y-2">
-                <Button className="w-full bg-[#0D7C66]" type="submit">
+              <div>
+                <Button className="w-full bg-[#0D7C66] py-2" type="submit">
                   Login
                 </Button>
               </div>
@@ -58,7 +58,7 @@ const LoginPage: React.FC = () => {
           <div className="text-left mt-3 text-sm">
             {"You don't have an account yet? "}
             <Link
-              to="#"
+              to="/register"
               className="text-primary hover:underline hover:text-[#0D7C66]"
             >
               Register Now
