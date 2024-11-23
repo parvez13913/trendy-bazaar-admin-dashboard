@@ -1,6 +1,6 @@
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
-import { Button } from "@/components/ui/button";
+import Button from "@/components/ui/button";
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";

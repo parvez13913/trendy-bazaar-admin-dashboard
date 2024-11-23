@@ -1,6 +1,6 @@
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
-import { Button } from "@/components/ui/button";
+import Button from "@/components/ui/button";
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -76,7 +76,7 @@ const RegisterPage: React.FC = () => {
             </div>
           </Form>
           <div className="text-left mt-3 text-sm">
-            {"You don't have an account yet? "}
+            {"Already have an account? "}
             <Link
               to="#"
               className="text-primary hover:underline hover:text-[#0D7C66]"
