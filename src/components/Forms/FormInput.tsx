@@ -1,6 +1,6 @@
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
-import { GetErrorMessage } from "../../utils/GetErrorMessage";
+import { GetErrorMessage } from "../../utils/get-error-message";
 import { Input } from "../ui/input";
 
 interface FormInputProps {

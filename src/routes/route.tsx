@@ -1,7 +1,7 @@
-import RegisterPage from "@/pages/Register";
+import LoginPage from "@/pages/login";
+import RegisterPage from "@/pages/register";
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import LoginPage from "../pages/Login";
 
 const router = createBrowserRouter([
   {

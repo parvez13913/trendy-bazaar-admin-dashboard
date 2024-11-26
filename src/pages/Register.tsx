@@ -11,8 +11,8 @@ const RegisterPage: React.FC = () => {
   return (
     <section>
       <div className="flex items-center justify-center mt-4 lg:mt-10">
-        <h2 className="rounded-full border border-[#0D7C66] p-6 h-32 w-32 text-center">
-          <FaShoppingCart className="w-10 h-10 mx-auto text-[#0D7C66]" />
+        <h2 className="rounded-full border border-primary p-6 h-32 w-32 text-center">
+          <FaShoppingCart className="w-10 h-10 mx-auto text-primary" />
           <span className="font-semibold text-xs mt-4 line-clamp-none">
             Trendy Bazar
           </span>
@@ -69,7 +69,7 @@ const RegisterPage: React.FC = () => {
                 />
               </div>
               <div>
-                <Button className="bg-[#0D7C66] py-2" type="submit">
+                <Button className="bg-primary py-2" type="submit">
                   Register
                 </Button>
               </div>
@@ -79,7 +79,7 @@ const RegisterPage: React.FC = () => {
             {"Already have an account? "}
             <Link
               to="/login"
-              className="text-primary hover:underline hover:text-[#0D7C66]"
+              className="text-primary hover:underline hover:text-primary"
             >
               Login Now
             </Link>
