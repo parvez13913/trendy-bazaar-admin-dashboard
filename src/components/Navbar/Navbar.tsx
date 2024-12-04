@@ -18,7 +18,7 @@ const NavBar = () => {
             className="cursor-pointer bg-primary text-white p-3 rounded-sm font-normal hover:opacity-50"
             to="/login"
           >
-            Register / Login
+            Login
           </Link>
         </div>
       </div>

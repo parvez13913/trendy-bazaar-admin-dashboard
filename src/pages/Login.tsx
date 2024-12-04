@@ -1,13 +1,45 @@
+import { storeUserInfo } from "@/auth-service/auth-service";
 import Button from "@/components/Forms/Button";
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
+import { useLoginMutation } from "@/redux/api/auth-api";
+import { loginSchema } from "@/utils/zood-schemas/auth.validation";
+import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
+import { useForm } from "react-hook-form";
 import { FaShoppingCart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
+import { z } from "zod";
 
 const LoginPage: React.FC = () => {
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const [login] = useLoginMutation();
+  const navigate = useNavigate();
+
+  const form = useForm<z.infer<typeof loginSchema>>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "parvezz13913@gmail.com",
+      password: "password",
+    },
+  });
+
+  const onSubmit = async (data: { email: string; password: string }) => {
+    const toastId = toast.loading("Logging in.", {
+      duration: 2000,
+    });
+
+    try {
+      const response = await login({ ...data }).unwrap();
+
+      if (response?.success) {
+        toast.success("User is Logged in successfully");
+        navigate("/");
+      }
+      storeUserInfo({ accessToken: response?.token });
+    } catch (error) {
+      toast.error("Something went wrong.", { id: toastId });
+    }
   };
 
   return (
@@ -26,7 +58,7 @@ const LoginPage: React.FC = () => {
           <p className="text-sm text-muted-foreground my-2">
             Enter your email & password to login
           </p>
-          <Form submitHandler={onSubmit}>
+          <Form submitHandler={onSubmit} {...form}>
             <div className="space-y-4">
               <div className="space-y-2">
                 <FormInput
@@ -57,15 +89,6 @@ const LoginPage: React.FC = () => {
               </div>
             </div>
           </Form>
-          <div className="text-left mt-3 text-sm">
-            {"You don't have an account yet? "}
-            <Link
-              to="/register"
-              className="text-primary hover:underline hover:text-primary"
-            >
-              Register Now
-            </Link>
-          </div>
         </div>
       </div>
     </section>

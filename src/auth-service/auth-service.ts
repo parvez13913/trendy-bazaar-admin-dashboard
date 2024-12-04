@@ -1,5 +1,5 @@
 import { authKey } from "@/constants/storage-key";
-import { instance as axiosInstance } from "@/helpers/axios-instance";
+import { instance } from "@/helpers/axios/axios-instance";
 import { getBaseUrl } from "@/helpers/config/env-config";
 import { decodedToken } from "@/utils/jwt";
 import { getToLocalStorage, setToLocalStorage } from "@/utils/local-storage";
@@ -28,7 +28,7 @@ export const removeUserInfo = (key: string) => {
 };
 
 export const getNewAccessToken = async () => {
-  return await axiosInstance({
+  return await instance({
     url: `${getBaseUrl()}/auth/refreshToken`,
     method: "POST",
     headers: { "Content-Type": "application/json" },
