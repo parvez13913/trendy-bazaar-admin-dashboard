@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { LeftSidebar } from "../Sidebar/Sidebar";
-import { SidebarProvider } from "../ui/sidebar";
+import { Outlet } from "react-router-dom";
+import AppSidebar from "../ui/app-sidebar";
+import { SidebarProvider, SidebarTrigger } from "../ui/sidebar";
 
 const MainLayout = () => {
-  const [open, setOpen] = useState(false);
   return (
-    <div>
-      {/* <NavBar /> */}
-      <SidebarProvider open={open} onOpenChange={setOpen}>
-        <LeftSidebar />
-      </SidebarProvider>
-    </div>
+    <SidebarProvider>
+      <AppSidebar />
+      <main>
+        <SidebarTrigger />
+        <Outlet />
+      </main>
+    </SidebarProvider>
   );
 };
 
