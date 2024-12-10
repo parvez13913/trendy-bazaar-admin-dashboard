@@ -13,6 +13,15 @@ export const authApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.auth],
     }),
+
+    createAdmin: build.mutation({
+      query: (data) => ({
+        url: `${AUTH_URL}/admin-register`,
+        method: "POST",
+        data,
+      }),
+      invalidatesTags: [tagTypes.admin],
+    }),
   }),
 });
 
