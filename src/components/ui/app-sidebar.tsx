@@ -1,4 +1,4 @@
-import { FaHome } from "react-icons/fa";
+import { IoPersonAdd } from "react-icons/io5";
 import {
   Sidebar,
   SidebarContent,
@@ -14,9 +14,9 @@ import {
 const AppSidebar = () => {
   const items = [
     {
-      title: "Home",
-      url: "#",
-      icon: FaHome,
+      title: "Create Admin",
+      url: "/create-admin",
+      icon: IoPersonAdd,
     },
   ];
 

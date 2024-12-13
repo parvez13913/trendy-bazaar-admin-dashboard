@@ -9,6 +9,7 @@ type FormConfig = {
 type FormProps = {
   children?: ReactElement | ReactNode;
   submitHandler: SubmitHandler<any>;
+  className?: string;
 } & FormConfig;
 
 const Form: React.FC<FormProps> = ({
@@ -16,6 +17,7 @@ const Form: React.FC<FormProps> = ({
   submitHandler,
   defaultValues,
   resolver,
+  className,
 }) => {
   const fromConfig: FormConfig = {};
   if (!!defaultValues) fromConfig["defaultValues"] = defaultValues;
@@ -33,7 +35,9 @@ const Form: React.FC<FormProps> = ({
 
   return (
     <FormProvider {...method}>
-      <form onSubmit={handleSubmit(onSubmit)}>{children}</form>
+      <form onSubmit={handleSubmit(onSubmit)} className={className}>
+        {children}
+      </form>
     </FormProvider>
   );
 };
