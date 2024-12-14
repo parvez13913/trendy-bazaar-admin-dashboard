@@ -1,5 +1,6 @@
 import Button from "@/components/Forms/Button";
 import Form from "@/components/Forms/Form";
+import FormDatePicker from "@/components/Forms/FormDatePicker";
 import FormInput from "@/components/Forms/FormInput";
 import FormSelect from "@/components/Forms/FormSelect";
 import {
@@ -78,7 +79,7 @@ const CreateAdminPage = () => {
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-2 space-x-4 my-10">
+              <div className="grid grid-cols-3 space-x-4 my-10">
                 <div>
                   <FormSelect
                     name="gender"
@@ -106,30 +107,10 @@ const CreateAdminPage = () => {
                     ]}
                   />
                 </div>
+                <div>
+                  <FormDatePicker name="dateOfBirth" />
+                </div>
               </div>
-              {/* <div>
-                <Label htmlFor="dateBirth">Date of Birth</Label>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      className={`w-full justify-start text-left font-normal ${
-                        !date && "text-muted-foreground"
-                      }`}
-                    >
-                      <CalendarIcon className="mr-2 h-4 w-4" />
-                      {date ? format(date, "PPP") : <span>Pick a date</span>}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0">
-                    <Calendar
-                      mode="single"
-                      selected={date}
-                      onSelect={setDate}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
-              </div> */}
               <Button className="md:col-span-2 bg-primary">Create Admin</Button>
             </Form>
           </CardContent>
