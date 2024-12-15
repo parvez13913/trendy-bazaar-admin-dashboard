@@ -12,7 +12,9 @@ import {
 } from "@/components/ui/card";
 
 const CreateAdminPage = () => {
-  const onSubmit = () => {};
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
 
   return (
     <div className={`min-h-screen`}>
@@ -84,16 +86,19 @@ const CreateAdminPage = () => {
                   <FormSelect
                     name="gender"
                     placeholder="Select gender"
+                    label="Gender"
                     options={[
                       { value: "Male", label: "Male" },
                       { value: "Female", label: "Female" },
                       { value: "Other", label: "Other" },
                     ]}
+                    required
                   />
                 </div>
                 <div>
                   <FormSelect
                     name="bloodGroup"
+                    label="Blood Group"
                     placeholder="Select blood group"
                     options={[
                       { value: "A+", label: "A+" },
@@ -105,13 +110,20 @@ const CreateAdminPage = () => {
                       { value: "O+", label: "O+" },
                       { value: "O-", label: "O-" },
                     ]}
+                    required
                   />
                 </div>
                 <div>
-                  <FormDatePicker name="dateOfBirth" />
+                  <FormDatePicker
+                    name="dateOfBirth"
+                    label="Date Of Birth"
+                    required
+                  />
                 </div>
               </div>
-              <Button className="md:col-span-2 bg-primary">Create Admin</Button>
+              <Button className="md:col-span-2 bg-primary" type="submit">
+                Create Admin
+              </Button>
             </Form>
           </CardContent>
         </Card>

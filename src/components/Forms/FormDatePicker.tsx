@@ -13,6 +13,7 @@ type DatePickerProps = {
   size?: "large" | "small";
   value?: Dayjs;
   label?: string;
+  required?: boolean;
 };
 
 const FormDatePicker = ({
@@ -21,6 +22,7 @@ const FormDatePicker = ({
   value,
   label,
   onChange,
+  required,
 }: DatePickerProps) => {
   const { control, setValue } = useFormContext();
   const handleOnChange = (date: Date | undefined) => {
@@ -33,8 +35,9 @@ const FormDatePicker = ({
   };
 
   return (
-    <div className="flex flex-col w-full">
-      {label && <label className="text-red-500 font-semibold">{label}</label>}
+    <>
+      {required ? <span className="text-red-500 font-semibold">*</span> : null}
+      {label ? label : null}
       <Controller
         name={name}
         control={control}
@@ -68,7 +71,7 @@ const FormDatePicker = ({
           </Popover>
         )}
       />
-    </div>
+    </>
   );
 };
 

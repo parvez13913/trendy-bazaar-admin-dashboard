@@ -51,7 +51,6 @@ const FormInput: React.FC<FormInputProps> = ({
               placeholder={placeholder}
               {...field}
               value={value ? value : field.value}
-              className="text-center font-semibold"
             />
           )
         }

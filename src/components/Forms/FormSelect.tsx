@@ -36,18 +36,9 @@ const FormSelect: React.FC<FormSelectProps> = ({
   const errorMessage = GetErrorMessage(errors, name);
 
   return (
-    <div className="space-y-2">
-      {label && (
-        <label
-          htmlFor={name}
-          className="text-sm  leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
-          {required && (
-            <span className="text-red-500 font-semibold mr-1">*</span>
-          )}
-          {label}
-        </label>
-      )}
+    <>
+      {required ? <span className="text-red-500 font-semibold">*</span> : null}
+      {label ? label : null}
       <Controller
         control={control}
         name={name}
@@ -67,7 +58,7 @@ const FormSelect: React.FC<FormSelectProps> = ({
         )}
       />
       {errorMessage && <small className="text-red-500">{errorMessage}</small>}
-    </div>
+    </>
   );
 };
 
