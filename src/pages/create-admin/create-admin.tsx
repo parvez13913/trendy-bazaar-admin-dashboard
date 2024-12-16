@@ -10,10 +10,33 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useCreateAdminMutation } from "@/redux/api/auth-api";
+import { createAdminSchema } from "@/utils/zood-schemas/auth.validation";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
 const CreateAdminPage = () => {
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const [createAdmin] = useCreateAdminMutation();
+  const form = useForm<z.infer<typeof createAdminSchema>>({
+    resolver: zodResolver(createAdminSchema),
+  });
+
+  const onSubmit = async (data: any) => {
+    const toastId = toast.loading("Logging in.", {
+      duration: 2000,
+    });
+
+    try {
+      const response = await createAdmin(data).unwrap();
+
+      if (response?.success) {
+        toast.success("Admin created successfully");
+      }
+    } catch (error) {
+      toast.error("Something went wrong.", { id: toastId });
+    }
   };
 
   return (
@@ -29,7 +52,7 @@ const CreateAdminPage = () => {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Form submitHandler={onSubmit}>
+            <Form submitHandler={onSubmit} {...form}>
               <div className="grid grid-cols-3 space-x-4 mb-10">
                 <div>
                   <FormInput
@@ -61,7 +84,16 @@ const CreateAdminPage = () => {
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-2 space-x-4 my-10">
+              <div className="grid grid-cols-3 space-x-4 my-10">
+                <div>
+                  <FormInput
+                    name="Email"
+                    type="email"
+                    label="Email"
+                    required
+                    placeholder="email"
+                  />
+                </div>
                 <div>
                   <FormInput
                     name="Contact Number"

@@ -1,7 +1,7 @@
 import { getNewAccessToken } from "@/auth-service/auth-service";
 import { authKey } from "@/constants/storage-key";
 import { IGenericErrorResponse, ResponseSuccessType } from "@/types";
-import { getToLocalStorage, setToLocalStorage } from "@/utils/local-storage";
+import { getFromLocalStorage, setToLocalStorage } from "@/utils/local-storage";
 import axios from "axios";
 
 const instance = axios.create();
@@ -12,7 +12,7 @@ instance.defaults.timeout = 60000;
 // Add a request interceptor
 instance.interceptors.request.use(
   function (config) {
-    const accessToken = getToLocalStorage(authKey);
+    const accessToken = getFromLocalStorage(authKey);
     if (accessToken) {
       config.headers.Authorization = accessToken;
     }
