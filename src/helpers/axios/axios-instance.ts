@@ -13,6 +13,7 @@ instance.defaults.timeout = 60000;
 instance.interceptors.request.use(
   function (config) {
     const accessToken = getFromLocalStorage(authKey);
+
     if (accessToken) {
       config.headers.Authorization = accessToken;
     }
@@ -28,13 +29,15 @@ instance.interceptors.response.use(
   //@ts-ignore
   function (response) {
     const responseObject: ResponseSuccessType = {
-      data: response?.data?.data,
+      data: response?.data.data,
       meta: response?.data?.meta,
     };
     return responseObject;
   },
   async function (error) {
     const config = error?.config;
+    console.log(error);
+
     if (error?.response?.status === 403 && !config?.sent) {
       config.sent = true;
       const response = await getNewAccessToken();

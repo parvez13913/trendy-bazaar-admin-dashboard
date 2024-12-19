@@ -24,6 +24,8 @@ const CreateAdminPage = () => {
   });
 
   const onSubmit = async (data: any) => {
+    console.log(data);
+
     const toastId = toast.loading("Logging in.", {
       duration: 2000,
     });
@@ -56,8 +58,8 @@ const CreateAdminPage = () => {
               <div className="grid grid-cols-3 space-x-4 mb-10">
                 <div>
                   <FormInput
-                    name="First Name"
-                    type="firstName"
+                    name="firstName"
+                    type="text"
                     label="First Name"
                     required
                     placeholder="Enter First Name"
@@ -66,8 +68,8 @@ const CreateAdminPage = () => {
 
                 <div>
                   <FormInput
-                    name="Middle Name"
-                    type="middleName"
+                    name="middleName"
+                    type="text"
                     label="Middle Name"
                     required
                     placeholder="Enter Middle Name"
@@ -76,8 +78,8 @@ const CreateAdminPage = () => {
 
                 <div>
                   <FormInput
-                    name="Last Name"
-                    type="lastName"
+                    name="lastName"
+                    type="text"
                     label="Last Name"
                     required
                     placeholder="Enter Last Name"
@@ -87,7 +89,7 @@ const CreateAdminPage = () => {
               <div className="grid grid-cols-3 space-x-4 my-10">
                 <div>
                   <FormInput
-                    name="Email"
+                    name="email"
                     type="email"
                     label="Email"
                     required
@@ -96,8 +98,8 @@ const CreateAdminPage = () => {
                 </div>
                 <div>
                   <FormInput
-                    name="Contact Number"
-                    type="contactNo"
+                    name="contactNo"
+                    type="number"
                     label="Contact Number"
                     required
                     placeholder="Enter contact number"
@@ -105,8 +107,8 @@ const CreateAdminPage = () => {
                 </div>
                 <div>
                   <FormInput
-                    name="Address"
-                    type="address"
+                    name="address"
+                    type="text"
                     label="Address"
                     required
                     placeholder="Enter Address"

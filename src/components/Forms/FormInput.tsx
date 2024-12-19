@@ -12,6 +12,7 @@ interface FormInputProps {
   validation?: object;
   label?: string;
   required?: boolean;
+  className?: string;
 }
 
 const FormInput: React.FC<FormInputProps> = ({
@@ -23,6 +24,7 @@ const FormInput: React.FC<FormInputProps> = ({
   validation,
   label,
   required,
+  className,
 }) => {
   const {
     control,
@@ -43,7 +45,7 @@ const FormInput: React.FC<FormInputProps> = ({
               placeholder={placeholder}
               {...field}
               value={value ? value : field.value}
-              className="text-center font-semibold"
+              className={className}
             />
           ) : (
             <Input
@@ -51,6 +53,7 @@ const FormInput: React.FC<FormInputProps> = ({
               placeholder={placeholder}
               {...field}
               value={value ? value : field.value}
+              className={className}
             />
           )
         }
