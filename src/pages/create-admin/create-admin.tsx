@@ -24,9 +24,7 @@ const CreateAdminPage = () => {
   });
 
   const onSubmit = async (data: any) => {
-    console.log(data);
-
-    const toastId = toast.loading("Logging in.", {
+    const toastId = toast.loading("Creating.", {
       duration: 2000,
     });
 

@@ -15,7 +15,7 @@ const AppSidebar = () => {
   const items = [
     {
       title: "Create Admin",
-      url: "/request-join-admin",
+      url: "/request-admin-register",
       icon: IoPersonAdd,
     },
   ];

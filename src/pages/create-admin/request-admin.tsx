@@ -9,12 +9,22 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useRequestAdminRegisterMutation } from "@/redux/api/auth-api";
 import { motion } from "framer-motion";
-import { Toaster } from "sonner";
+import { toast, Toaster } from "sonner";
 
 const RequestAdminPage = () => {
+  const [requestAdminRegister] = useRequestAdminRegisterMutation();
   const onSubmit = async (data: React.FormEvent) => {
-    console.log(data);
+    try {
+      const response = await requestAdminRegister(data);
+
+      if (response) {
+        toast.success("Admin created successfully");
+      }
+    } catch (error) {
+      toast.error("Something went wrong.");
+    }
   };
 
   return (

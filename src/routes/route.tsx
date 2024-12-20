@@ -11,7 +11,7 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        path: "request-join-admin",
+        path: "request-admin-register",
         element: <RequestAdminPage />,
       },
     ],
