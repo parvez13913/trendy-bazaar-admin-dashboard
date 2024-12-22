@@ -23,19 +23,20 @@ const LoginPage: React.FC = () => {
     },
   });
 
-  const onSubmit = async (data: { email: string; password: string }) => {
+  const onSubmit = async (data: Record<string, unknown>) => {
     const toastId = toast.loading("Logging in.", {
       duration: 2000,
     });
 
     try {
-      const response = await login({ ...data }).unwrap();
+      const response = await login({ ...data });
+      console.log(response.data);
 
-      if (response?.success) {
+      if (response?.data?.message) {
         toast.success("User is Logged in successfully");
         navigate("/");
       }
-      storeUserInfo({ accessToken: response?.token });
+      storeUserInfo({ accessToken: response?.data?.token });
     } catch (error) {
       toast.error("Something went wrong.", { id: toastId });
     }
@@ -56,18 +57,16 @@ const LoginPage: React.FC = () => {
           <h1 className="text-xl font-semibold text-center">
             Login to account
           </h1>
-          <p className="text-sm text-muted-foreground my-2 text-center">
+          <p className="text-sm my-2 text-center">
             Enter your{" "}
-            <span className="text-primary font-serif underline">
-              email & password
-            </span>{" "}
-            to login
+            <span className="font-serif underline">email & password</span> to
+            login
           </p>
           <Form submitHandler={onSubmit} {...form}>
             <div className="space-y-4 w-3/4 mx-auto">
               <div className="space-y-2">
                 <FormInput
-                  name="Email"
+                  name="email"
                   type="email"
                   label="Email"
                   required

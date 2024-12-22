@@ -6,6 +6,7 @@ export interface IMeta {
 export type ResponseSuccessType = {
   data: any;
   meta?: IMeta;
+  token?: string;
 };
 
 export type IGenericErrorResponse = {
