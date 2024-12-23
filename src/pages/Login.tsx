@@ -31,7 +31,6 @@ const LoginPage: React.FC = () => {
 
     try {
       const response = await login({ ...data });
-      console.log(response.data);
 
       if (response?.data?.message) {
         toast.success("User is Logged in successfully");

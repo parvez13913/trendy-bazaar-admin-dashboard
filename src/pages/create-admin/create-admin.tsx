@@ -14,11 +14,15 @@ import { useCreateAdminMutation } from "@/redux/api/auth-api";
 import { createAdminSchema } from "@/utils/zood-schemas/auth.validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useLocation } from "react-router-dom";
 import { toast } from "sonner";
 import { z } from "zod";
 
 const CreateAdminPage = () => {
   const [createAdmin] = useCreateAdminMutation();
+  const location = useLocation();
+  console.log(location);
+
   const form = useForm<z.infer<typeof createAdminSchema>>({
     resolver: zodResolver(createAdminSchema),
   });
