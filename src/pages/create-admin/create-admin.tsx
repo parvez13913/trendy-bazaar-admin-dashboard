@@ -21,10 +21,25 @@ import { z } from "zod";
 const CreateAdminPage = () => {
   const [createAdmin] = useCreateAdminMutation();
   const location = useLocation();
-  console.log(location);
 
+  // Extract email from URL
+  const token = location.search;
+
+  let prefilledEmail = "";
+
+  try {
+    const decodedToken = JSON.parse(atob(token!.split(".")[1]));
+    prefilledEmail = decodedToken?.email || "";
+  } catch (error) {
+    console.error("Failed to decode token:", error);
+  }
+
+  // Initialize form with default values
   const form = useForm<z.infer<typeof createAdminSchema>>({
     resolver: zodResolver(createAdminSchema),
+    defaultValues: {
+      email: prefilledEmail,
+    },
   });
 
   const onSubmit = async (data: any) => {
@@ -95,7 +110,17 @@ const CreateAdminPage = () => {
                     type="email"
                     label="Email"
                     required
-                    placeholder="email"
+                    readOnly={true}
+                    placeholder={prefilledEmail}
+                  />
+                </div>
+                <div>
+                  <FormInput
+                    name="password"
+                    type="password"
+                    label="Password"
+                    required
+                    placeholder="Password"
                   />
                 </div>
                 <div>
@@ -105,15 +130,6 @@ const CreateAdminPage = () => {
                     label="Contact Number"
                     required
                     placeholder="Enter contact number"
-                  />
-                </div>
-                <div>
-                  <FormInput
-                    name="address"
-                    type="text"
-                    label="Address"
-                    required
-                    placeholder="Enter Address"
                   />
                 </div>
               </div>

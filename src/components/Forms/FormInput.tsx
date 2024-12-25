@@ -13,6 +13,7 @@ interface FormInputProps {
   label?: string;
   required?: boolean;
   className?: string;
+  readOnly?: boolean;
 }
 
 const FormInput: React.FC<FormInputProps> = ({
@@ -25,6 +26,7 @@ const FormInput: React.FC<FormInputProps> = ({
   label,
   required,
   className,
+  readOnly,
 }) => {
   const {
     control,
@@ -54,6 +56,7 @@ const FormInput: React.FC<FormInputProps> = ({
               {...field}
               value={value ? value : field.value}
               className={className}
+              readOnly={readOnly}
             />
           )
         }
