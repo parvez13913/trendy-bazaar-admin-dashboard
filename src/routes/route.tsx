@@ -15,15 +15,15 @@ const router = createBrowserRouter([
         path: "request-admin-register",
         element: <RequestAdminPage />,
       },
-      {
-        path: "create-admin",
-        element: <CreateAdminPage />,
-      },
     ],
   },
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "create-admin",
+    element: <CreateAdminPage />,
   },
   {
     path: "*",

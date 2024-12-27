@@ -28,14 +28,14 @@ const RequestAdminPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="flex items-center h-[calc(100vh - 64px)] justify-center">
       <Toaster position="top-center" />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Card className="w-96 shadow-2xl backdrop-blur-sm">
+        <Card className="w-96 shadow-2xl">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center text-gray-800">
               Admin Register

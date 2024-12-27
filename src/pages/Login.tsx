@@ -45,12 +45,12 @@ const LoginPage: React.FC = () => {
   return (
     <section>
       <motion.div
-        className="min-h-screen flex items-center justify-center text-black"
+        className="flex items-center h-screen text-black"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="w-11/12 lg:w-1/2 px-4 py-10 rounded-lg shadow-md border">
+        <div className="px-4 py-10 w-96 mx-auto shadow-2xl rounded-lg border">
           <h1 className="text-xl font-semibold text-center">
             Login to account
           </h1>
