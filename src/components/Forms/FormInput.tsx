@@ -14,6 +14,7 @@ interface FormInputProps {
   required?: boolean;
   className?: string;
   readOnly?: boolean;
+  defaultValue?: string;
 }
 
 const FormInput: React.FC<FormInputProps> = ({
@@ -27,6 +28,7 @@ const FormInput: React.FC<FormInputProps> = ({
   required,
   className,
   readOnly,
+  defaultValue,
 }) => {
   const {
     control,
@@ -57,6 +59,7 @@ const FormInput: React.FC<FormInputProps> = ({
               value={value ? value : field.value}
               className={className}
               readOnly={readOnly}
+              defaultValue={defaultValue}
             />
           )
         }

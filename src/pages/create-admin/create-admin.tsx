@@ -111,7 +111,7 @@ const CreateAdminPage = () => {
                     label="Email"
                     required
                     readOnly={true}
-                    placeholder={prefilledEmail}
+                    defaultValue={prefilledEmail}
                   />
                 </div>
                 <div>
