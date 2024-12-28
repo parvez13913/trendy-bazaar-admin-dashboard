@@ -97,15 +97,6 @@ const CreateAdminPage = () => {
                   placeholder="Password"
                 />
               </div>
-              <div>
-                <FormInput
-                  name="contactNo"
-                  type="number"
-                  label="Contact Number"
-                  required
-                  placeholder="Enter contact number"
-                />
-              </div>
             </div>
             <Button
               type="submit"

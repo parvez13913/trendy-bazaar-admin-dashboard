@@ -15,7 +15,7 @@ const NotFoundPage: React.FC = () => {
           Oops! The page you're looking for doesn't exist. It might have been
           moved or deleted.
         </p>
-        <Button className="mt-8 bg-primary">
+        <Button className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-foreground hover:to-secondary-foreground text-foreground font-semibold py-2 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105">
           <Link to="/" className="inline-flex items-center space-x-2">
             <IoHome className="w-4 h-4" />
             <span>Back to Home</span>
