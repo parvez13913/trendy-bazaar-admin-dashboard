@@ -1,3 +1,4 @@
+import { storeUserInfo } from "@/auth-service/auth-service";
 import Button from "@/components/Forms/Button";
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
@@ -13,13 +14,14 @@ import { createAdminSchema } from "@/utils/zood-schemas/auth.validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { z } from "zod";
 
 const CreateAdminPage = () => {
   const [createAdmin] = useCreateAdminMutation();
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Extract email from URL
   const token = location.search;
@@ -42,16 +44,21 @@ const CreateAdminPage = () => {
   });
 
   const onSubmit = async (data: any) => {
+    data.email = prefilledEmail;
+    data.role = "ADMIN";
+
     const toastId = toast.loading("Creating.", {
       duration: 2000,
     });
 
     try {
-      const response = await createAdmin(data).unwrap();
-
-      if (response?.success) {
-        toast.success("Admin created successfully");
+      const response = await createAdmin(data);
+      if (response.data.success) {
+        toast.success(`${response.data.message}`);
+        navigate("/");
       }
+
+      storeUserInfo({ accessToken: response?.data?.token });
     } catch (error) {
       toast.error("Something went wrong.", { id: toastId });
     }
