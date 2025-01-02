@@ -1,5 +1,6 @@
 import { jwtDecode } from "jwt-decode";
 
 export const decodedToken = (token: string) => {
-  jwtDecode(token);
+  const decodedData = jwtDecode(token);
+  return decodedData;
 };

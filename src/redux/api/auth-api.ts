@@ -14,6 +14,14 @@ export const authApi = baseApi.injectEndpoints({
       invalidatesTags: [tagTypes.auth],
     }),
 
+    logout: build.mutation({
+      query: (data) => ({
+        url: `${AUTH_URL}/logout`,
+        method: "POST",
+        data,
+      }),
+    }),
+
     requestAdminRegister: build.mutation({
       query: (data) => ({
         url: `${AUTH_URL}/request-admin-register`,
@@ -36,6 +44,7 @@ export const authApi = baseApi.injectEndpoints({
 
 export const {
   useLoginMutation,
+  useLogoutMutation,
   useCreateAdminMutation,
   useRequestAdminRegisterMutation,
 } = authApi;
