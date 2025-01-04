@@ -1,4 +1,4 @@
-import { IoPersonAdd } from "react-icons/io5";
+import { LuUserCog, LuUserPlus } from "react-icons/lu";
 import {
   Sidebar,
   SidebarContent,
@@ -16,7 +16,12 @@ const AppSidebar = () => {
     {
       title: "Create Admin",
       url: "/request-admin-register",
-      icon: IoPersonAdd,
+      icon: LuUserPlus,
+    },
+    {
+      title: "Manage Admin",
+      url: "/manage-admin",
+      icon: LuUserCog,
     },
   ];
 
