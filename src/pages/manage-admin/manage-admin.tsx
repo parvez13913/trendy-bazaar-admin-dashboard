@@ -27,7 +27,14 @@ const ManageAdmin = () => {
   const { data, isLoading } = useGetAllAdminsQuery({ ...query });
   const admins = data?.admins;
   const meta = data?.meta;
+  console.log(isLoading);
   console.log(admins);
+  console.log(meta);
+  console.log(setSortOrder);
+  console.log(setSortBy);
+  console.log(setSearchTerm);
+  console.log(setPage);
+  console.log(setSize);
 
   return (
     <div className="text-black">
