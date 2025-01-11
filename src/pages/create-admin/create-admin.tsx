@@ -74,7 +74,7 @@ const CreateAdminPage = () => {
       <Card className="w-96 mx-auto shadow-2xl">
         <CardHeader>
           <div className="flex justify-center items-center">
-            <CardTitle className="text-3xl font-bold">Create Admin</CardTitle>
+            <CardTitle className="text-3xl font-bold">Create Account</CardTitle>
           </div>
           <div className="flex justify-center items-center">
             <CardDescription>
@@ -109,7 +109,7 @@ const CreateAdminPage = () => {
               type="submit"
               className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-foreground hover:to-secondary-foreground text-foreground font-semibold py-2 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105"
             >
-              Create Admin
+              Create Account
             </Button>
           </Form>
         </CardContent>

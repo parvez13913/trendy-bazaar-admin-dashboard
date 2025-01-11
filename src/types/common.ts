@@ -23,7 +23,7 @@ export type IGenericErrorMessage = {
 export interface IAdmin {
   id: string;
   firstName: string;
-  middleName: string;
+  middleName?: string;
   lastName: string;
   gender: string;
   address: string;
@@ -34,4 +34,13 @@ export interface IAdmin {
   createdAt: string;
   updatedAt: string;
   __v: number;
+}
+
+export interface IAdminResponse {
+  admins: {
+    data: IAdmin[];
+    meta: {
+      total: number;
+    };
+  };
 }

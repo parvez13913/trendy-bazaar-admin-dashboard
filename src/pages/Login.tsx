@@ -94,7 +94,7 @@ const LoginPage: React.FC = () => {
                   type="submit"
                   className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-foreground hover:to-secondary-foreground text-foreground font-semibold py-2 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105"
                 >
-                  Send Request
+                  Login
                 </Button>
               </div>
             </div>
