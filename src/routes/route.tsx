@@ -4,6 +4,7 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "@/components/Layout/MainLayout";
 import CreateAdminPage from "@/pages/create-admin/create-admin";
 import RequestAdminPage from "@/pages/create-admin/request-admin";
+import ForgotPasswordPage from "@/pages/forgot-password/forgot-password";
 import LoginPage from "@/pages/Login";
 import ManageAdmin from "@/pages/manage-admin/manage-admin";
 
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "create-admin",
     element: <CreateAdminPage />,
+  },
+  {
+    path: "forgot-password",
+    element: <ForgotPasswordPage />,
   },
   {
     path: "*",
