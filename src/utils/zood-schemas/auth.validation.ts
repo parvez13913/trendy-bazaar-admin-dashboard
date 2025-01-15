@@ -12,6 +12,12 @@ export const loginSchema = z.object({
     .max(30),
 });
 
+export const forgotPasswordSchema = z.object({
+  email: z.string().email().min(2, {
+    message: "Email is required",
+  }),
+});
+
 export const createAdminSchema = z.object({
   firstName: z.string({ required_error: "First name is required" }),
   middleName: z.string({ required_error: "Middle name is required" }),
