@@ -8,43 +8,59 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { useForgotPasswordMutation } from "@/redux/api/auth-api";
-import { forgotPasswordSchema } from "@/utils/zood-schemas/auth.validation";
+import { useResetPasswordMutation } from "@/redux/api/auth-api";
+import { resetPasswordSchema } from "@/utils/zood-schemas/auth.validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast, Toaster } from "sonner";
 import { z } from "zod";
 
-const ForgotPasswordPage = () => {
-  const form = useForm<z.infer<typeof forgotPasswordSchema>>({
-    resolver: zodResolver(forgotPasswordSchema),
-  });
+const ResetPasswordPage = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const token = location.search;
 
-  const [forgotPassword] = useForgotPasswordMutation();
+  let prefilledEmail = "";
+
+  try {
+    const decodedToken = JSON.parse(atob(token!.split(".")[1]));
+    prefilledEmail = decodedToken?.email || "";
+  } catch (error) {
+    console.error("Failed to decode token:", error);
+  }
+
+  const form = useForm<z.infer<typeof resetPasswordSchema>>({
+    resolver: zodResolver(resetPasswordSchema),
+    defaultValues: {
+      email: prefilledEmail,
+    },
+  });
+  const [resetPassword] = useResetPasswordMutation();
 
   const onSubmit = async (data: Record<string, unknown>) => {
-    try {
-      const response = await forgotPassword({ ...data });
+    data.email = prefilledEmail;
 
-      if (response?.data?.success) {
-        toast.success("Check your email");
+    try {
+      const response = await resetPassword(data);
+      if (!!response?.data?.success) {
+        navigate("/login");
+        toast(response?.data?.message);
       }
     } catch (error) {
       toast.error("Something went wrong.");
     }
   };
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
       <Toaster />
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center">
-            Forgot Password
+            Reset Password
           </CardTitle>
           <CardDescription className="text-center">
-            Enter your email address and we'll send you a link to reset your
-            password.
+            Enter your email and new password to reset your account.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -56,7 +72,17 @@ const ForgotPasswordPage = () => {
                   type="email"
                   label="Email"
                   required
-                  placeholder="Email"
+                  readOnly={true}
+                  defaultValue={prefilledEmail}
+                />
+              </div>
+              <div className="space-y-2">
+                <FormInput
+                  name="newPassword"
+                  type="password"
+                  label="New Password"
+                  required
+                  placeholder="New Password"
                 />
               </div>
               <div>
@@ -74,4 +100,5 @@ const ForgotPasswordPage = () => {
     </div>
   );
 };
-export default ForgotPasswordPage;
+
+export default ResetPasswordPage;

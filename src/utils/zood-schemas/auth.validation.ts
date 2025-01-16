@@ -12,6 +12,18 @@ export const loginSchema = z.object({
     .max(30),
 });
 
+export const resetPasswordSchema = z.object({
+  email: z.string().email().min(2, {
+    message: "Email is required",
+  }),
+  password: z
+    .string()
+    .min(4, {
+      message: "Password must be at lest 4 character.",
+    })
+    .max(30),
+});
+
 export const forgotPasswordSchema = z.object({
   email: z.string().email().min(2, {
     message: "Email is required",

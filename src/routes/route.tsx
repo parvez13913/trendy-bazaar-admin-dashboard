@@ -7,6 +7,7 @@ import RequestAdminPage from "@/pages/create-admin/request-admin";
 import ForgotPasswordPage from "@/pages/forgot-password/forgot-password";
 import LoginPage from "@/pages/Login";
 import ManageAdmin from "@/pages/manage-admin/manage-admin";
+import ResetPasswordPage from "@/pages/reset-password/reset-password";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "forgot-password",
     element: <ForgotPasswordPage />,
+  },
+  {
+    path: "reset-password",
+    element: <ResetPasswordPage />,
   },
   {
     path: "*",
