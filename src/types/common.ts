@@ -44,3 +44,22 @@ export interface IAdminResponse {
     };
   };
 }
+
+export interface IProfile {
+  data: {
+    id: string;
+    firstName: string;
+    middleName?: string;
+    lastName: string;
+    gender: string;
+    address: string;
+    role: string;
+    email: string;
+    contactNo: string;
+    dateOfBirth: string;
+    bloodGroup: string;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+  };
+}

@@ -34,7 +34,7 @@ const LoginPage: React.FC = () => {
 
       if (response?.data?.message) {
         toast.success("User is Logged in successfully");
-        navigate("/");
+        navigate("/profile");
       }
       storeUserInfo({ accessToken: response?.data?.token });
     } catch (error) {

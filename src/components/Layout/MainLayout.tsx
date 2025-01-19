@@ -1,4 +1,4 @@
-import ProfilePage from "@/pages/profile/profile";
+import { Outlet } from "react-router-dom";
 import NavBar from "../Navbar/Navbar";
 import AppSidebar from "../ui/app-sidebar";
 import { SidebarInset, SidebarProvider } from "../ui/sidebar";
@@ -11,7 +11,7 @@ const MainLayout = () => {
         <SidebarInset className="flex h-full w-full ">
           <NavBar />
           <div>
-            <ProfilePage />
+            <Outlet />
           </div>
         </SidebarInset>
       </div>
