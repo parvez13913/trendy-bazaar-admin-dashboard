@@ -56,6 +56,9 @@ const NavBar = () => {
                     {userInfo.role.toString()}
                   </DropdownMenuItem>
                 )}
+                <DropdownMenuItem>
+                  <Link to="edit-profile">Edit Profile</Link>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
