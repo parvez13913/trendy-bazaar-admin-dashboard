@@ -81,10 +81,19 @@ const EditProfilePage = () => {
               <div>
                 <FormInput
                   name="contactNo"
-                  type="tel"
+                  type="text"
                   label="Contact No"
                   required
                   placeholder="Contact No"
+                />
+              </div>
+              <div>
+                <FormInput
+                  name="address"
+                  type="text"
+                  label="Address"
+                  required
+                  placeholder="Address"
                 />
               </div>
             </div>
