@@ -96,6 +96,15 @@ const EditProfilePage = () => {
                   placeholder="Address"
                 />
               </div>
+              <div>
+                <FormInput
+                  name="Img"
+                  type="text"
+                  label="Img"
+                  required
+                  placeholder="Img"
+                />
+              </div>
             </div>
             <div className="flex items-center justify-center mt-8">
               <Button
