@@ -2,6 +2,7 @@
 
 import Button from "@/components/Forms/Button";
 import Form from "@/components/Forms/Form";
+import FormDatePicker from "@/components/Forms/FormDatePicker";
 import FormInput from "@/components/Forms/FormInput";
 import {
   Card,
@@ -45,7 +46,6 @@ const EditProfilePage = () => {
                   name="firstName"
                   type="text"
                   label="First Name"
-                  required
                   placeholder="First Name"
                 />
               </div>
@@ -63,7 +63,6 @@ const EditProfilePage = () => {
                   name="lastName"
                   type="text"
                   label="Last Name"
-                  required
                   placeholder="Last Name"
                 />
               </div>
@@ -73,7 +72,6 @@ const EditProfilePage = () => {
                   name="email"
                   type="email"
                   label="Email"
-                  required
                   placeholder="Email"
                 />
               </div>
@@ -83,7 +81,6 @@ const EditProfilePage = () => {
                   name="contactNo"
                   type="text"
                   label="Contact No"
-                  required
                   placeholder="Contact No"
                 />
               </div>
@@ -92,18 +89,11 @@ const EditProfilePage = () => {
                   name="address"
                   type="text"
                   label="Address"
-                  required
                   placeholder="Address"
                 />
               </div>
               <div>
-                <FormInput
-                  name="Img"
-                  type="text"
-                  label="Img"
-                  required
-                  placeholder="Img"
-                />
+                <FormDatePicker name="dateOfBirth" label="Date Of Birth" />
               </div>
             </div>
             <div className="flex items-center justify-center mt-8">
