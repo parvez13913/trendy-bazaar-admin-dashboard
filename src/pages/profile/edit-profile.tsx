@@ -66,16 +66,6 @@ const EditProfilePage = () => {
                   placeholder="Last Name"
                 />
               </div>
-
-              <div>
-                <FormInput
-                  name="email"
-                  type="email"
-                  label="Email"
-                  placeholder="Email"
-                />
-              </div>
-
               <div>
                 <FormInput
                   name="contactNo"
