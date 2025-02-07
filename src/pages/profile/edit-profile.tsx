@@ -13,12 +13,10 @@ import {
 } from "@/components/ui/card";
 import { updateProfileSchema } from "@/utils/zood-schemas/auth.validation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import type { z } from "zod";
 
 const EditProfilePage = () => {
-  const [date, setDate] = useState<Date>();
   const form = useForm<z.infer<typeof updateProfileSchema>>({
     resolver: zodResolver(updateProfileSchema),
   });
@@ -40,47 +38,51 @@ const EditProfilePage = () => {
         </CardHeader>
         <CardContent>
           <Form submitHandler={onSubmit} {...form} className="space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              <div>
-                <FormInput
-                  name="firstName"
-                  type="text"
-                  label="First Name"
-                  placeholder="First Name"
-                />
-              </div>
-              <div>
-                <FormInput
-                  name="middleName"
-                  type="text"
-                  label="Middle Name"
-                  placeholder="Middle Name"
-                />
-              </div>
+            <div>
+              <div className="grid grid-cols-3 space-x-3">
+                <div>
+                  <FormInput
+                    name="firstName"
+                    type="text"
+                    label="First Name"
+                    placeholder="First Name"
+                  />
+                </div>
+                <div>
+                  <FormInput
+                    name="middleName"
+                    type="text"
+                    label="Middle Name"
+                    placeholder="Middle Name"
+                  />
+                </div>
 
-              <div>
-                <FormInput
-                  name="lastName"
-                  type="text"
-                  label="Last Name"
-                  placeholder="Last Name"
-                />
+                <div>
+                  <FormInput
+                    name="lastName"
+                    type="text"
+                    label="Last Name"
+                    placeholder="Last Name"
+                  />
+                </div>
               </div>
-              <div>
-                <FormInput
-                  name="contactNo"
-                  type="text"
-                  label="Contact No"
-                  placeholder="Contact No"
-                />
-              </div>
-              <div>
-                <FormInput
-                  name="address"
-                  type="text"
-                  label="Address"
-                  placeholder="Address"
-                />
+              <div className="grid grid-cols-2 space-x-3">
+                <div>
+                  <FormInput
+                    name="contactNo"
+                    type="text"
+                    label="Contact No"
+                    placeholder="Contact No"
+                  />
+                </div>
+                <div>
+                  <FormInput
+                    name="address"
+                    type="text"
+                    label="Address"
+                    placeholder="Address"
+                  />
+                </div>
               </div>
               <div>
                 <FormDatePicker name="dateOfBirth" label="Date Of Birth" />
