@@ -4,6 +4,7 @@ import Button from "@/components/Forms/Button";
 import Form from "@/components/Forms/Form";
 import FormDatePicker from "@/components/Forms/FormDatePicker";
 import FormInput from "@/components/Forms/FormInput";
+import ImageUpload from "@/components/Forms/image-upload";
 import {
   Card,
   CardContent,
@@ -66,7 +67,7 @@ const EditProfilePage = () => {
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-2 space-x-3">
+              <div className="grid grid-cols-3 space-x-3">
                 <div>
                   <FormInput
                     name="contactNo"
@@ -83,9 +84,13 @@ const EditProfilePage = () => {
                     placeholder="Address"
                   />
                 </div>
+                <div>
+                  <FormDatePicker name="dateOfBirth" label="Date Of Birth" />
+                </div>
               </div>
-              <div>
-                <FormDatePicker name="dateOfBirth" label="Date Of Birth" />
+
+              <div className="w-36 my-4">
+                <ImageUpload name="profileImage" />
               </div>
             </div>
             <div className="flex items-center justify-center mt-8">
