@@ -8,6 +8,7 @@ import { TbGenderMale } from "react-icons/tb";
 
 const ProfilePage = () => {
   const { data, isLoading } = useGetProfileQuery("");
+  console.log(data);
 
   if (isLoading) {
     return <p>Loading...</p>;

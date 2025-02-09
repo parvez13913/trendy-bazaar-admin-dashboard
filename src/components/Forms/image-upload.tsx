@@ -6,37 +6,34 @@ import { useFormContext } from "react-hook-form";
 
 type ImageUploadProps = {
   name: string;
-  label?: string;
 };
 
-const ImageUpload = ({ name, label }: ImageUploadProps) => {
+const ImageUpload = ({ name }: ImageUploadProps) => {
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>();
   const { setValue } = useFormContext();
 
   const onDrop = useCallback(
     (acceptedFiles: File[]) => {
-      setLoading(true);
+      if (acceptedFiles.length === 0) return;
+
       const file = acceptedFiles[0];
-      if (file) {
-        if (file.size / 1024 / 1024 > 2) {
-          alert("Image must be smaller than 2MB!");
-          setLoading(false);
-          return;
-        }
-        if (!["image/jpeg", "image/png"].includes(file.type)) {
-          alert("You can only upload JPG/PNG file!");
-          setLoading(false);
-          return;
-        }
-        setValue(name, file);
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          setImageUrl(e.target?.result as string);
-          setLoading(false);
-        };
-        reader.readAsDataURL(file);
+      if (file.size / 1024 / 1024 > 2) {
+        alert("Image must be smaller than 2MB!");
+        return;
       }
+      if (!["image/jpeg", "image/png"].includes(file.type)) {
+        alert("You can only upload JPG/PNG files!");
+        return;
+      }
+
+      setValue(name, file, { shouldValidate: true });
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImageUrl(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
     },
     [name, setValue]
   );

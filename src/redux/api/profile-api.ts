@@ -25,6 +25,7 @@ export const profileApi = baseApi.injectEndpoints({
         url: `${PROFILE_URL}`,
         method: "PATCH",
         data,
+        contentType: "multipart/form-data",
       }),
     }),
   }),

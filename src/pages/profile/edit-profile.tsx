@@ -24,21 +24,21 @@ const EditProfilePage = () => {
   });
 
   const onSubmit = async (values: any) => {
+    const obj = { ...values };
+    const file = obj["file"];
+
+    delete obj["file"];
+    const data = JSON.stringify(obj);
+    const formData = new FormData();
+    formData.append("file", file as Blob);
+    formData.append("data", data);
     try {
-      const { file, ...obj } = values;
-      const formData = new FormData();
-      if (file) {
-        formData.append("file", file);
-      }
-      formData.append("data", JSON.stringify(obj));
-
       const response = await updateProfile(formData);
-
       if (!!response) {
-        toast.success(response.data.message);
+        toast.success("Student added successfully");
       }
     } catch (error: any) {
-      toast.error(error.response?.data?.message || error.message);
+      toast.error(error.message);
     }
   };
 
@@ -106,7 +106,7 @@ const EditProfilePage = () => {
             </div>
 
             <div className="mt-4 w-1/3">
-              <ImageUpload name="profileImage" />
+              <ImageUpload name="file" />
             </div>
             <div className="flex items-center justify-center my-4">
               <Button
