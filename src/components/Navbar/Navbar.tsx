@@ -37,7 +37,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="border-b sticky top-0">
+    <div className="border-b sticky top-0 z-[9999] bg-white">
       <div className="h-16 px-8 flex items-center">
         <div className="ml-auto flex items-center space-x-4 text-primary">
           {userLoggedIn ? (

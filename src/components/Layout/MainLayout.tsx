@@ -6,7 +6,7 @@ import { SidebarInset, SidebarProvider } from "../ui/sidebar";
 const MainLayout = () => {
   return (
     <SidebarProvider>
-      <div className="flex h-screen w-full overflow-hidden font-poppins">
+      <div className="flex w-full font-poppins">
         <AppSidebar />
         <SidebarInset className="flex h-full w-full ">
           <NavBar />
