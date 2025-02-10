@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       {
         path: "manage-admin",
         element: (
-          <ProtectedRoute allowedRoles={["super-admin"]}>
+          <ProtectedRoute allowedRoles={["SUPER_ADMIN"]}>
             <ManageAdmin />
           </ProtectedRoute>
         ),
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
   {
     path: "create-admin",
     element: (
-      <ProtectedRoute allowedRoles={["super-admin"]}>
+      <ProtectedRoute allowedRoles={["SUPER_ADMIN"]}>
         <CreateAdminPage />
       </ProtectedRoute>
     ),

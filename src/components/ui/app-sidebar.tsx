@@ -1,3 +1,6 @@
+import { getUserInfo } from "@/auth-service/auth-service";
+import { JwtPayload } from "jwt-decode";
+import { FaRegUser } from "react-icons/fa6";
 import { LuUserCog, LuUserPlus } from "react-icons/lu";
 import {
   Sidebar,
@@ -11,19 +14,40 @@ import {
   SidebarTrigger,
 } from "./sidebar";
 
+interface UserInfo extends JwtPayload {
+  role: string;
+}
+
 const AppSidebar = () => {
+  const userInfo = getUserInfo() as UserInfo;
+  const userRole = userInfo?.role || "admin";
+
+  // Sidebar items
   const items = [
+    {
+      title: "Profile",
+      url: "/profile",
+      icon: FaRegUser,
+      role: "ADMIN",
+    },
     {
       title: "Create Admin",
       url: "/request-admin-register",
       icon: LuUserPlus,
+      role: "SUPER_ADMIN",
     },
     {
       title: "Manage Admin",
       url: "/manage-admin",
       icon: LuUserCog,
+      role: "SUPER_ADMIN",
     },
   ];
+
+  // Filter items based on user role
+  const visibleItems = items.filter(
+    (item) => !item.role || item.role === userRole
+  );
 
   return (
     <Sidebar collapsible="icon">
@@ -35,7 +59,7 @@ const AppSidebar = () => {
           <SidebarGroupLabel>Trendy Bazar</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
+              {visibleItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
@@ -52,4 +76,5 @@ const AppSidebar = () => {
     </Sidebar>
   );
 };
+
 export default AppSidebar;
