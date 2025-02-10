@@ -2,6 +2,7 @@ import NotFoundPage from "@/pages/shared/not-found";
 import { createBrowserRouter } from "react-router-dom";
 
 import MainLayout from "@/components/Layout/MainLayout";
+import ProtectedRoute from "@/components/ProtectedRoute";
 import CreateAdminPage from "@/pages/create-admin/create-admin";
 import RequestAdminPage from "@/pages/create-admin/request-admin";
 import ForgotPasswordPage from "@/pages/forgot-password/forgot-password";
@@ -30,7 +31,11 @@ const router = createBrowserRouter([
       },
       {
         path: "manage-admin",
-        element: <ManageAdmin />,
+        element: (
+          <ProtectedRoute allowedRoles={["super-admin"]}>
+            <ManageAdmin />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
@@ -40,7 +45,11 @@ const router = createBrowserRouter([
   },
   {
     path: "create-admin",
-    element: <CreateAdminPage />,
+    element: (
+      <ProtectedRoute allowedRoles={["super-admin"]}>
+        <CreateAdminPage />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "forgot-password",

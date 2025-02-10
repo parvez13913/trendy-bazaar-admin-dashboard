@@ -57,6 +57,7 @@ export interface IProfile {
     email: string;
     contactNo: string;
     dateOfBirth: string;
+    profileImage: string;
     bloodGroup: string;
     createdAt: string;
     updatedAt: string;

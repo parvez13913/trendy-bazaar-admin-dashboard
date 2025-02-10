@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useGetProfileQuery } from "@/redux/api/profile-api";
+import { Loader2 } from "lucide-react";
 import { FaCalendarAlt, FaHome, FaMobile } from "react-icons/fa";
 import { IoIosPerson } from "react-icons/io";
 import { RxEnvelopeClosed } from "react-icons/rx";
@@ -8,10 +9,9 @@ import { TbGenderMale } from "react-icons/tb";
 
 const ProfilePage = () => {
   const { data, isLoading } = useGetProfileQuery("");
-  console.log(data);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader2 className="w-8 h-8 animate-spin" />;
   }
 
   return (
@@ -25,7 +25,7 @@ const ProfilePage = () => {
           <CardContent className="flex flex-col items-center">
             <Avatar className="w-32 h-32 mb-4">
               <AvatarImage
-                src="/placeholder.svg?height=128&width=128"
+                src={data?.profile?.data?.profileImage}
                 alt={`${data?.profile?.data?.firstName} ${data?.profile?.data?.lastName}`}
               />
               <AvatarFallback>
