@@ -28,26 +28,24 @@ const AppSidebar = () => {
       title: "Profile",
       url: "/profile",
       icon: FaRegUser,
-      role: "ADMIN",
+      roles: ["ADMIN", "SUPER_ADMIN"],
     },
     {
       title: "Create Admin",
       url: "/request-admin-register",
       icon: LuUserPlus,
-      role: "SUPER_ADMIN",
+      roles: ["SUPER_ADMIN"],
     },
     {
       title: "Manage Admin",
       url: "/manage-admin",
       icon: LuUserCog,
-      role: "SUPER_ADMIN",
+      roles: ["SUPER_ADMIN"],
     },
   ];
 
   // Filter items based on user role
-  const visibleItems = items.filter(
-    (item) => !item.role || item.role === userRole
-  );
+  const visibleItems = items.filter((item) => item.roles.includes(userRole));
 
   return (
     <Sidebar collapsible="icon">
