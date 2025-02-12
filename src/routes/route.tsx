@@ -8,6 +8,7 @@ import RequestAdminPage from "@/pages/create-admin/request-admin";
 import ForgotPasswordPage from "@/pages/forgot-password/forgot-password";
 import LoginPage from "@/pages/Login";
 import ManageAdmin from "@/pages/manage-admin/manage-admin";
+import CreateProductCategoryPage from "@/pages/product-category/create-product-category";
 import EditProfilePage from "@/pages/profile/edit-profile";
 import ProfilePage from "@/pages/profile/profile";
 import ResetPasswordPage from "@/pages/reset-password/reset-password";
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "edit-profile",
         element: <EditProfilePage />,
+      },
+      {
+        path: "create-product-category",
+        element: <CreateProductCategoryPage />,
       },
       {
         path: "request-admin-register",

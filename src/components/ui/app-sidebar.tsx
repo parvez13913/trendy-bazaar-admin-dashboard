@@ -1,5 +1,6 @@
 import { getUserInfo } from "@/auth-service/auth-service";
 import { JwtPayload } from "jwt-decode";
+import { BiSolidObjectsHorizontalLeft } from "react-icons/bi";
 import { FaRegUser } from "react-icons/fa6";
 import { LuUserCog, LuUserPlus } from "react-icons/lu";
 import {
@@ -20,7 +21,7 @@ interface UserInfo extends JwtPayload {
 
 const AppSidebar = () => {
   const userInfo = getUserInfo() as UserInfo;
-  const userRole = userInfo?.role || "admin";
+  const userRole = userInfo?.role || "ADMIN";
 
   // Sidebar items
   const items = [
@@ -29,6 +30,12 @@ const AppSidebar = () => {
       url: "/profile",
       icon: FaRegUser,
       roles: ["ADMIN", "SUPER_ADMIN"],
+    },
+    {
+      title: "Create Product Category",
+      url: "/create-product-category",
+      icon: BiSolidObjectsHorizontalLeft,
+      roles: ["ADMIN"],
     },
     {
       title: "Create Admin",

@@ -7,7 +7,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -23,6 +22,7 @@ import {
 import { useGetAllAdminsQuery } from "@/redux/api/admin-api";
 import { useDebounced } from "@/redux/hooks";
 import { IAdmin } from "@/types";
+import { Loader2 } from "lucide-react";
 
 const ManageAdmin = () => {
   const [size, setSize] = useState<number>(10);
@@ -69,7 +69,7 @@ const ManageAdmin = () => {
   };
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader2 className="w-8 h-8 animate-spin" />;
   }
 
   const admins =
@@ -145,13 +145,11 @@ const ManageAdmin = () => {
                 <TableCell className="text-right">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button className="h-8 w-8 p-0 bg-primary">
-                        <span className="sr-only">Open menu</span>
-                        <FiMoreHorizontal className="h-4 w-4" />
+                      <Button className="bg-primary w-10 h-10 rounded-full">
+                        <FiMoreHorizontal className="h-3 w-3" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuLabel>Actions</DropdownMenuLabel>
                       <DropdownMenuItem
                         onClick={() =>
                           navigator.clipboard.writeText(admin.email)
