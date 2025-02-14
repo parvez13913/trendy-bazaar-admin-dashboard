@@ -38,7 +38,7 @@ const FormInput: React.FC<FormInputProps> = ({
   return (
     <>
       {required ? <span className="text-red-500 font-semibold">*</span> : null}
-      {label ? <span>{label}</span> : null}
+      {label ? <span className="text-black">{label}</span> : null}
       <Controller
         control={control}
         name={name}

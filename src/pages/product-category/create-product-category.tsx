@@ -1,5 +1,12 @@
+import Button from "@/components/Forms/Button";
+import Form from "@/components/Forms/Form";
+import FormInput from "@/components/Forms/FormInput";
+import { ProductCategorySchema } from "@/utils/zood-schemas/product-category.validation";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { PlusIcon, XIcon } from "lucide-react";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const CreateProductCategoryPage = () => {
   const [categories, setCategories] = useState([
@@ -12,12 +19,20 @@ const CreateProductCategoryPage = () => {
   const [newCategory, setNewCategory] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const addCategory = () => {
-    if (newCategory.trim()) {
-      setCategories([...categories, newCategory.trim()]);
-      setNewCategory("");
-      setIsModalOpen(false);
-    }
+  const form = useForm<z.infer<typeof ProductCategorySchema>>({
+    resolver: zodResolver(ProductCategorySchema),
+  });
+
+  const onSubmit = async (data: any) => {
+    console.log(data);
+
+    try {
+      if (newCategory.trim()) {
+        setCategories([...categories, newCategory.trim()]);
+        setNewCategory("");
+        setIsModalOpen(false);
+      }
+    } catch (error) {}
   };
 
   return (
@@ -27,13 +42,13 @@ const CreateProductCategoryPage = () => {
           <h1 className="text-3xl font-bold text-gray-800">
             Product Categories
           </h1>
-          <button
+          <Button
             onClick={() => setIsModalOpen(true)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out flex items-center"
+            className="bg-gradient-to-r from-primary to-secondary hover:from-primary-foreground hover:to-secondary-foreground text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out flex items-center"
           >
             <PlusIcon className="w-5 h-5 mr-2" />
             Add Category
-          </button>
+          </Button>
         </header>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -45,7 +60,7 @@ const CreateProductCategoryPage = () => {
               <h2 className="text-xl font-semibold text-gray-800 mb-2">
                 {category}
               </h2>
-              <div className="w-16 h-1 bg-blue-500 rounded"></div>
+              <div className="w-16 h-1 bg-primary rounded"></div>
             </div>
           ))}
         </div>
@@ -57,26 +72,30 @@ const CreateProductCategoryPage = () => {
                 <h2 className="text-2xl font-bold text-gray-800">
                   Add New Category
                 </h2>
-                <button
+                <Button
                   onClick={() => setIsModalOpen(false)}
                   className="text-gray-600 hover:text-gray-800"
                 >
                   <XIcon className="w-6 h-6" />
-                </button>
+                </Button>
               </div>
-              <input
-                type="text"
-                value={newCategory}
-                onChange={(e) => setNewCategory(e.target.value)}
-                placeholder="Enter category name"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
-              />
-              <button
-                onClick={addCategory}
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out"
-              >
-                Add Category
-              </button>
+              <Form submitHandler={onSubmit} {...form}>
+                <FormInput
+                  type="text"
+                  value={newCategory}
+                  label="Category Name"
+                  required
+                  name="name"
+                  placeholder="Enter category name"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary mb-4 text-black"
+                />
+                <Button
+                  className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-foreground hover:to-secondary-foreground text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out"
+                  type="submit"
+                >
+                  Add Category
+                </Button>
+              </Form>
             </div>
           </div>
         )}
