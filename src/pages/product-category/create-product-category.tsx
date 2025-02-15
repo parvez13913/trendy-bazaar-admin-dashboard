@@ -1,11 +1,13 @@
 import Button from "@/components/Forms/Button";
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
+import { useCreateMutation } from "@/redux/api/product-category-api";
 import { ProductCategorySchema } from "@/utils/zood-schemas/product-category.validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PlusIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast, Toaster } from "sonner";
 import { z } from "zod";
 
 const CreateProductCategoryPage = () => {
@@ -23,20 +25,28 @@ const CreateProductCategoryPage = () => {
     resolver: zodResolver(ProductCategorySchema),
   });
 
-  const onSubmit = async (data: any) => {
-    console.log(data);
+  const [create] = useCreateMutation();
 
+  const onSubmit = async (data: any) => {
     try {
+      const response = await create(data);
+      if (response?.data?.success) {
+        toast.success(response?.data?.message);
+        setIsModalOpen(false);
+      }
+
       if (newCategory.trim()) {
         setCategories([...categories, newCategory.trim()]);
         setNewCategory("");
-        setIsModalOpen(false);
       }
-    } catch (error) {}
+    } catch (error) {
+      toast.error("Something went wrong.");
+    }
   };
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
+      <Toaster />
       <div className="max-w-6xl mx-auto">
         <header className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800">
