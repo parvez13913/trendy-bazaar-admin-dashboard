@@ -35,7 +35,7 @@ const EditProfilePage = () => {
     try {
       const response = await updateProfile(formData);
       if (!!response) {
-        toast.success("Student added successfully");
+        toast.success("Profile data updated");
       }
     } catch (error: any) {
       toast.error(error.message);

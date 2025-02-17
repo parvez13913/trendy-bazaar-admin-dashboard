@@ -1,17 +1,24 @@
 import { tagTypes } from "../tag-type";
 import { baseApi } from "./base-api";
 
-const AUTH_URL = "/categories";
+const PRODUCT_CATEGORY_URL = "/categories";
 
 export const productCategoryApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     create: build.mutation({
       query: (data) => ({
-        url: `${AUTH_URL}/create-product-category`,
+        url: `${PRODUCT_CATEGORY_URL}/create-product-category`,
         method: "POST",
         data,
       }),
       invalidatesTags: [tagTypes.productCategory],
+    }),
+    getAll: build.query({
+      query: () => ({
+        url: PRODUCT_CATEGORY_URL,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.productCategory],
     }),
   }),
 });
