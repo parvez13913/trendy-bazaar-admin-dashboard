@@ -9,6 +9,7 @@ import ForgotPasswordPage from "@/pages/forgot-password/forgot-password";
 import LoginPage from "@/pages/Login";
 import ManageAdmin from "@/pages/manage-admin/manage-admin";
 import CreateProductCategoryPage from "@/pages/product-category/create-product-category";
+import CreateProductPage from "@/pages/product/product";
 import EditProfilePage from "@/pages/profile/edit-profile";
 import ProfilePage from "@/pages/profile/profile";
 import ResetPasswordPage from "@/pages/reset-password/reset-password";
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "create-product-category",
         element: <CreateProductCategoryPage />,
+      },
+      {
+        path: "create-product",
+        element: <CreateProductPage />,
       },
       {
         path: "request-admin-register",

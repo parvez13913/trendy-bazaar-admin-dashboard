@@ -1,8 +1,10 @@
 import { getUserInfo } from "@/auth-service/auth-service";
 import { JwtPayload } from "jwt-decode";
 import { BiSolidObjectsHorizontalLeft } from "react-icons/bi";
+import { CgAddR } from "react-icons/cg";
 import { FaRegUser } from "react-icons/fa6";
 import { LuUserCog, LuUserPlus } from "react-icons/lu";
+import { Link } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,
@@ -38,6 +40,12 @@ const AppSidebar = () => {
       roles: ["ADMIN"],
     },
     {
+      title: "Create Product",
+      url: "/create-product",
+      icon: CgAddR,
+      roles: ["ADMIN"],
+    },
+    {
       title: "Create Admin",
       url: "/request-admin-register",
       icon: LuUserPlus,
@@ -67,10 +75,10 @@ const AppSidebar = () => {
               {visibleItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <Link to={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

@@ -7,7 +7,7 @@ import {
 } from "@/redux/api/product-category-api";
 import { ProductCategorySchema } from "@/utils/zood-schemas/product-category.validation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { PlusIcon, XIcon } from "lucide-react";
+import { Loader2, PlusIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast, Toaster } from "sonner";
@@ -58,7 +58,7 @@ const CreateProductCategoryPage = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {isLoading ? (
-            <p>Loading categories...</p>
+            <Loader2 className="w-8 h-8 animate-spin" />
           ) : (
             data?.data?.map((category: any) => (
               <div
