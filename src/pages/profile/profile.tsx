@@ -15,8 +15,8 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className="mx-auto px-6 py-8">
-      <h1 className="text-3xl font-bold mb-6">Admin Profile</h1>
+    <div className="mx-auto px-6 py-8 bg-gray-100 min-h-screen">
+      <h1 className="text-3xl font-bold mb-6 text-gray-800">Admin Profile</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="md:col-span-1">
           <CardHeader>

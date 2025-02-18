@@ -14,13 +14,14 @@ export const productCategoryApi = baseApi.injectEndpoints({
       invalidatesTags: [tagTypes.productCategory],
     }),
     getAll: build.query({
-      query: () => ({
+      query: (arg: Record<string, any>) => ({
         url: PRODUCT_CATEGORY_URL,
         method: "GET",
+        params: arg,
       }),
       providesTags: [tagTypes.productCategory],
     }),
   }),
 });
 
-export const { useCreateMutation } = productCategoryApi;
+export const { useCreateMutation, useGetAllQuery } = productCategoryApi;

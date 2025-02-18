@@ -1,7 +1,10 @@
 import Button from "@/components/Forms/Button";
 import Form from "@/components/Forms/Form";
 import FormInput from "@/components/Forms/FormInput";
-import { useCreateMutation } from "@/redux/api/product-category-api";
+import {
+  useCreateMutation,
+  useGetAllQuery,
+} from "@/redux/api/product-category-api";
 import { ProductCategorySchema } from "@/utils/zood-schemas/product-category.validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PlusIcon, XIcon } from "lucide-react";
@@ -11,18 +14,15 @@ import { toast, Toaster } from "sonner";
 import { z } from "zod";
 
 const CreateProductCategoryPage = () => {
-  const [categories, setCategories] = useState([
-    "Electronics",
-    "Clothing",
-    "Books",
-    "Home & Garden",
-    "Toys",
-  ]);
-  const [newCategory, setNewCategory] = useState("");
+  const { data, isLoading } = useGetAllQuery({});
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const form = useForm<z.infer<typeof ProductCategorySchema>>({
     resolver: zodResolver(ProductCategorySchema),
+    defaultValues: {
+      name: "",
+    },
   });
 
   const [create] = useCreateMutation();
@@ -33,11 +33,6 @@ const CreateProductCategoryPage = () => {
       if (response?.data?.success) {
         toast.success(response?.data?.message);
         setIsModalOpen(false);
-      }
-
-      if (newCategory.trim()) {
-        setCategories([...categories, newCategory.trim()]);
-        setNewCategory("");
       }
     } catch (error) {
       toast.error("Something went wrong.");
@@ -62,17 +57,21 @@ const CreateProductCategoryPage = () => {
         </header>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {categories.map((category, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1"
-            >
-              <h2 className="text-xl font-semibold text-gray-800 mb-2">
-                {category}
-              </h2>
-              <div className="w-16 h-1 bg-primary rounded"></div>
-            </div>
-          ))}
+          {isLoading ? (
+            <p>Loading categories...</p>
+          ) : (
+            data?.data?.map((category: any) => (
+              <div
+                key={category.id}
+                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1"
+              >
+                <h2 className="text-xl font-semibold text-gray-800 mb-2">
+                  {category?.name}
+                </h2>
+                <div className="w-16 h-1 bg-primary rounded"></div>
+              </div>
+            ))
+          )}
         </div>
 
         {isModalOpen && (
@@ -92,7 +91,6 @@ const CreateProductCategoryPage = () => {
               <Form submitHandler={onSubmit} {...form}>
                 <FormInput
                   type="text"
-                  value={newCategory}
                   label="Category Name"
                   required
                   name="name"
