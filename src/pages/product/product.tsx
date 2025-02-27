@@ -55,9 +55,6 @@ const CreateProductPage: React.FC = () => {
                   })}
                   placeholder="Enter product name"
                 />
-                {errors.name && (
-                  <p className="text-sm text-red-500">{errors.name.message}</p>
-                )}
               </div>
 
               <div className="space-y-2">
