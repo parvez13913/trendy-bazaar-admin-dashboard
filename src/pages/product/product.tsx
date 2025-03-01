@@ -1,4 +1,5 @@
 import Button from "@/components/Forms/Button";
+import FormTextArea from "@/components/Forms/FormTextArea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import {
@@ -123,20 +124,7 @@ const CreateProductPage: React.FC = () => {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="description">Description</label>
-              <textarea
-                id="description"
-                {...register("description", {
-                  required: "Description is required",
-                })}
-                placeholder="Enter product description"
-                className="h-32"
-              />
-              {errors.description && (
-                <p className="text-sm text-red-500">
-                  {errors.description.message}
-                </p>
-              )}
+              <FormTextArea name="description" />
             </div>
 
             <div className="space-y-2">
