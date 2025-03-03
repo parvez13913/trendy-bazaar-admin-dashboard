@@ -23,18 +23,14 @@ interface ProductFormData {
 const CreateProductPage: React.FC = () => {
   const form = useForm<z.infer<typeof ProductSchema>>({
     resolver: zodResolver(ProductSchema),
-    defaultValues: {
-      name: "",
-    },
   });
 
   const onSubmit = (data: ProductFormData) => {
-    // Here you would typically send the data to your API
     console.log(data);
   };
 
   return (
-    <div className="mx-auto px-4 py-8 bg-gray-100">
+    <div className="mx-auto px-4 py-8 bg-gray-100 min-h-screen">
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl font-bold">
@@ -45,23 +41,38 @@ const CreateProductPage: React.FC = () => {
           <Form submitHandler={onSubmit} {...form} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <FormInput name="productName" label="Product Name" />
+                <FormInput
+                  name="productName"
+                  label="Product Name"
+                  placeholder="Product Name"
+                />
               </div>
 
               <div className="space-y-2">
-                <FormInput name="price" label="Price" />
+                <FormInput name="price" label="Price" placeholder="Price" />
               </div>
 
               <div className="space-y-2">
-                <FormInput name="quantity" label="Quantity" />
+                <FormInput
+                  name="quantity"
+                  label="Quantity"
+                  placeholder="Quantity"
+                />
               </div>
             </div>
 
             <div className="space-y-2">
-              <FormTextArea name="description" />
+              <FormTextArea
+                name="description"
+                label="Description"
+                placeholder="Description"
+              />
             </div>
 
-            <Button type="submit" className="w-full">
+            <Button
+              type="submit"
+              className="bg-gradient-to-r from-primary to-secondary hover:from-primary-foreground hover:to-secondary-foreground text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out flex items-center"
+            >
               <Plus className="mr-2 h-4 w-4" /> Create Product
             </Button>
           </Form>
