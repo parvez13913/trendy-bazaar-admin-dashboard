@@ -59,6 +59,9 @@ const CreateProductPage: React.FC = () => {
                   placeholder="Quantity"
                 />
               </div>
+              <div className="space-y-2">
+                <FormInput name="Img" label="Img" placeholder="Img" />
+              </div>
             </div>
 
             <div className="space-y-2">
