@@ -67,6 +67,13 @@ const CreateProductPage: React.FC = () => {
                 />
               </div>
               <div className="space-y-2">
+                <FormInput
+                  name="productCategoryId"
+                  label="productCategoryId"
+                  placeholder="productCategoryId"
+                />
+              </div>
+              <div className="space-y-2">
                 <FormInput name="Img" label="Img" placeholder="Img" />
               </div>
             </div>
