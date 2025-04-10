@@ -95,6 +95,13 @@ const CreateProductPage: React.FC = () => {
                 placeholder="Description"
               />
             </div>
+            <div className="space-y-2">
+              <FormTextArea
+                name="description"
+                label="Description"
+                placeholder="Description"
+              />
+            </div>
 
             <Button
               type="submit"
