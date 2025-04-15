@@ -66,35 +66,8 @@ const CreateProductPage: React.FC = () => {
                   placeholder="productCategoryId"
                 />
               </div>
-              <div className="space-y-2">
-                <FormInput
-                  name="productCategoryId"
-                  label="productCategoryId"
-                  placeholder="productCategoryId"
-                />
-              </div>
-              <div className="space-y-2">
-                <FormInput
-                  name="productCategoryId"
-                  label="productCategoryId"
-                  placeholder="productCategoryId"
-                />
-              </div>
-              <div className="space-y-2">
-                <FormInput name="Img" label="Img" placeholder="Img" />
-              </div>
-              <div className="space-y-2">
-                <FormInput name="Img" label="Img" placeholder="Img" />
-              </div>
             </div>
 
-            <div className="space-y-2">
-              <FormTextArea
-                name="description"
-                label="Description"
-                placeholder="Description"
-              />
-            </div>
             <div className="space-y-2">
               <FormTextArea
                 name="description"
